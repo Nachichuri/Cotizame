@@ -1,7 +1,7 @@
 # Divisame
 
 ## About
-Divisame es un proyecto con varias patas que convergen en una pagina web informativa, con las cotizaciones históricas de las diferentes divisas ofrecidas en diferentes bancos argentinos. Almacena, procesa y muestra la información diaria recolectada de los sitios webs públicos de cada banco luego del cierre de cotizaciones.
+Divisame es un proyecto con varias partes que convergen en una pagina web informativa, con las cotizaciones históricas de las diferentes divisas ofrecidas en diferentes bancos argentinos. Almacena, procesa y muestra la información diaria recolectada de los sitios webs públicos de cada banco luego del cierre de cotizaciones.
 
 Más allá de los usos inmediatos de esta información, como cualquier tipo de base de datos, sirve para obtener tendencias de como evolucionan (o en el caso del pobre peso argentino, involuciona) las cotizaciones de las monedas, tendencias generales de los bancos, etc. La idea es ir agregando cada vez más funcionalidades de visualizacion.
 
