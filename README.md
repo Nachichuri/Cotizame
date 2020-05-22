@@ -12,11 +12,13 @@ Podés saber más sobre el proyecto leyendo las [F.A.Q](https://divisa.me/faq).
 ## Under the hood
 Divisame funciona con una serie de [scrapers](scrapers) que levantan la información pública de las páginas de cada banco y la guardan en una base de datos (corren corren en un cron bastante crudo, a futuro tengo que ver como implementarlo mejor).
 
-Las bases de datos son usadas como base para la [página web](webpage), hecha con Django, un framework web basado en Python. La gestión de la información es bastante sencilla y no es realmente necesario un framework para el frontend, y es posible gestionar todo el contenido solamente con [3 templates de Django](/webpage/bancos/templates/).
+Las bases de datos son usadas como base (já) para la [página web](webpage), hecha con Django, un framework web basado en Python. La gestión de la información es bastante sencilla y no es realmente necesario un framework para el frontend, y es posible gestionar todo el contenido solamente con [3 templates de Django](/webpage/bancos/templates/).
 
-A su vez, se hace uso de librerías como [Chart.js](https://www.chartjs.org/) para lograr una visualización mucho más agradable de los datos.
+A su vez, hice uso de librerías como [Chart.js](https://www.chartjs.org/) para lograr una visualización mucho más agradable de los datos.
 
-Te invito a que veas las partes principales en este repo, ¡y cualquier sugerencia es bienvenida!
+Toda la información está accesible a través de una [API RESTful](https://divisa.me/api/), que te invito a conocer.
+
+También te invito que veas las partes principales del proyecto en este repo, y cualquier sugerencia es bienvenida.
 
 ### ¿Dudas, sugerencias o críticas?
 
