@@ -1,0 +1,443 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
+
+/* Body */
+body {
+  font-family: "Ubuntu", sans-sans-serif;
+  background-image: url("../images/bg.svg");
+  background-color: #f9f9fa;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.hipervinculo {
+  text-decoration: none;
+  color: #3e8a70 !important;
+}
+
+th {
+  text-align: center;
+}
+
+/* END Body */
+
+/* Navbar */
+
+#logo {
+  width: 10em;
+
+}
+
+.navbar {
+  padding: 1.5rem;
+
+}
+
+nav {
+  box-shadow: rgba(0, 0, 0, 0.09) 0 6px 10px 0;
+  font-size: 1.2rem;
+}
+
+.navbar-nav {
+  padding-left: 0.75em;
+}
+
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:focus {
+  color: #3e8a70 !important;
+  transition: 0.3s;
+}
+
+.nav-item {
+  margin-left: 1rem;
+}
+
+#api-link {
+  font-size: 0.9em;
+}
+
+/* END Navbar */
+
+/* Dashboard */
+
+.card {
+  /* box-shadow:rgba(0, 0, 0, 0.09) 0 6px 14px 0; */
+  box-shadow: 0 12px 18px 2px rgba(34, 0, 51, 0.04),
+    0 6px 22px 4px rgba(7, 48, 114, 0.12),
+    0 6px 10px -4px rgba(14, 13, 26, 0.12);
+  border-width: 0.25em;
+  border-color: white;
+  border-radius: 1rem;
+}
+
+.card:after {
+  content: "";
+  display: block;
+  margin-left: 25%;
+  width: 50%;
+  border-bottom: 0.3em solid #fff;
+}
+
+/* */
+
+#compra-venta-hoy{
+  margin-bottom: 3rem;
+}
+
+.row {
+  margin-right: -16px;
+  margin-left: -16px;
+}
+
+h5 {
+  font-size: 1.3rem;
+}
+
+.card {
+  padding: 1em;
+}
+
+.card-title {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-size: 1.3em;
+  color: black;
+  padding-top: 0.4rem;
+}
+
+.pais {
+  font-size: 0.9rem;
+}
+
+.segunda-row {
+  font-size: 0.9rem;
+  color: #808080;
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  padding-bottom: 0.75rem;
+}
+
+#bbva-card:hover:after {
+  border-bottom: 0.3em solid #072146;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#bbva-card:hover > div > a > h5 {
+  color: #072146;
+  transition: 0.3s;
+}
+
+#ciudad-card:hover:after {
+  border-bottom: 0.3em solid #00aeef;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#ciudad-card:hover > div > a > h5 {
+  color: #00aeef;
+  transition: 0.3s;
+}
+
+#galicia-card:hover:after {
+  border-bottom: 0.3em solid #f96611;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#galicia-card:hover > div > a > h5 {
+  color: #f96611;
+  transition: 0.3s;
+}
+
+#icbc-card:hover:after {
+  border-bottom: 0.3em solid #c4161c;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#icbc-card:hover > div > a > h5 {
+  color: #c4161c;
+  transition: 0.3s;
+}
+
+#nacion-card:hover:after {
+  border-bottom: 0.3em solid #007894;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#nacion-card:hover > div > a > h5 {
+  color: #007894;
+  transition: 0.3s;
+}
+
+#patagonia-card:hover:after {
+  border-bottom: 0.3em solid #004987;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#patagonia-card:hover > div > a > h5 {
+  color: #004987;
+  transition: 0.3s;
+}
+
+#provincia-card:hover:after {
+  border-bottom: 0.3em solid #98c020;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#provincia-card:hover > div > a > h5 {
+  color: #98c020;
+  transition: 0.3s;
+}
+
+#santander-card:hover:after {
+  border-bottom: 0.3em solid #e20717;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#santander-card:hover > div > a > h5 {
+  color: #e20717;
+  transition: 0.3s;
+}
+
+.devalua {
+  color: #3e8a70;
+}
+.aprecia {
+  color: #aa0b0b;
+}
+
+/* END Dashboard */
+
+/* Tooltips */
+
+.tooltip-inner {
+  font-size: 0.9em;
+}
+
+/* END Tooltips */
+
+/* Tablas */
+
+.table-container {
+  background-color: white;
+  padding: 1em;
+  margin-bottom: 2em;
+  border-radius: 1em;
+  box-shadow: 0 12px 18px 2px rgba(34, 0, 51, 0.04),
+    0 6px 22px 4px rgba(7, 48, 114, 0.12),
+    0 6px 10px -4px rgba(14, 13, 26, 0.12);
+  /* border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em; */
+}
+
+.table-bordered td, .table-bordered th {
+  border: 1px solid #f4f4f4;
+}
+
+.valor-venta {
+  border-right: 2px solid #f4f4f4 !important;
+}
+.box-grueso {
+  border: 2px solid #f4f4f4 !important;
+}
+.slot-fecha {
+  border-right: 2px solid #f4f4f4 !important;
+  border-left: 2px solid #f4f4f4 !important;
+}
+
+.anterior {
+  color: #686868;
+}
+
+#table-menu {
+  background-color: white;
+  font-size: 1.2em;
+  padding: 1em;
+  border-radius: 1em;
+  margin: 1em 0 1em 0;
+  box-shadow: rgba(0, 0, 0, 0.09) 0 6px 10px 0;
+}
+
+#table-title {
+  text-align:center;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+td {
+  text-align: center;
+}
+
+#aclaracion-tabla {
+  text-align: right;
+  font-size: 0.8em;
+  color: #808080;
+}
+
+.custom-switch {
+  color: #808080;
+  font-size: 0.8em;
+  padding-left: 3.5rem;
+}
+
+.custom-control-label {
+  padding-top: 0.233em;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #3e8a70;
+  border-color: #808080;
+}
+
+.boton-descarga {
+  color: #3e8a70;
+  background-color: white;
+  border: 1px solid white;
+}
+
+.boton-descarga:hover {
+  border: 1px solid #3e8a70;
+  transition: 0.3s;
+}
+
+#download-section {
+  text-align: right;
+}
+
+/* Super boton */
+
+/* END Super boton */
+
+/* END Tablas */
+
+/* Charts */
+
+.navbar-main {
+  margin-top: 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: white;
+}
+
+.dashboard-card {
+  margin-top: 1.5em;
+  padding: 1.7em 1em 0 1em;
+  text-align: center;
+}
+
+.main-card-title {
+  padding-top: 1rem;
+  font-family: inherit;
+}
+.main-card-subtitle {
+  font-size: 0.5em;
+  color: #808080;
+  font-weight: normal;
+}
+
+.main-card-rows {
+  margin-bottom: 1rem;
+}
+
+#dashboard-venta, #dashboard-compra {
+  font-size: 1.5rem;
+}
+
+
+/* END Charts */
+
+/* Footer */
+
+footer {
+  background-color: white;
+  padding-bottom: 20px;
+}
+
+#python-message {
+  background-color: #f8f9fa;
+}
+
+#py-link,
+#py-link:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+#github-link,
+#github-link:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+#py-link:hover,
+#github-link:hover,
+.fa-heart:hover {
+  color: #3e8a70;
+  transition: 0.3s;
+}
+
+.fa-creative-commons,
+.fa-creative-commons-by,
+.fa-creative-commons-sa {
+  font-size: 1.1rem;
+  padding-top: 1rem;
+}
+
+#creative-commons {
+  font-size: 0.9rem;
+}
+
+#license-cc {
+  color: inherit;
+}
+
+#disclaimer {
+  font-size: 0.62rem;
+  text-align: justify;
+  color: gray;
+}
+
+/* END Footer */
+
+.notfound {
+  text-align: center;
+  padding: 20em 0 20rem 0;
+}

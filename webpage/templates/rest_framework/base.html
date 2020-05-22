@@ -1,0 +1,78 @@
+{% extends "rest_framework/base.html" %}
+{% load static %}
+   {% block title %} Divisa.me - API {% endblock %}
+     {% block branding %}
+       <head>
+        <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.6.0/css/all.css">
+        <meta name="description" content="API REST de Divisa.me"/>
+        <meta name="keywords" content="API, dolar, cotizaciones, pesos, divisas, divisame, divisa.me, cotización">
+        <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+        
+        <!-- Matomo -->
+        <script type="text/javascript">
+            var _paq = window._paq || [];
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+            var u="//analytics.divisa.me/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+            })();
+        </script>
+        <!-- End Matomo Code -->
+       </head>
+       
+       <style>
+            body {
+                font-family: "Ubuntu", sans-serif;
+                color: #3e8a70;
+            }
+            body a:hover {
+                color: #3e8a70;
+            }
+            a, a:visited {
+                color: #3e8a70;
+            }
+            .navbar {
+                border-top: 5px solid #3e8a70;
+            }
+            .str {
+                color: #3e8a70;
+            }
+            .btn-primary, .btn-primary:hover, .btn-primary:active, .btn:active {
+                background-color: #3e8a70!important;
+            }
+            .btn-primary:visited {
+                color:white;
+            }
+            .lit {
+                color: black;
+            }
+       </style>
+
+       <div>
+        <div class='navbar-brand'>
+         <a href="{% url "index" %}" style="margin-right: 1rem;"><i class="fas fa-arrow-circle-left"></i></a><a href="https://divisa.me/api/" rel="nofollow"><strong>Divisa.me</strong> Django Rest API <span class="version">1</span></a>
+        </div>
+       </div>
+{% endblock %}
+{% block description %}
+<div style="text-align: justify; color: black; line-height: 1.7em;">
+    <p>
+    ¡Bienvenidx! Esta es la parte divertida donde se puede jugar con todos los datos disponibles en Divisa.me
+    <br>
+    <div class="row" style="color: black;">
+        <div class="col-md-7">
+            <p>Esto es una <a title="Más info" href="https://searchapparchitecture.techtarget.com/definition/RESTful-API" target="_blank">API RESTful</a> propiciada por Django que nos permite interactuar con los datos. Si bien tiene muchas funcionalidades, de manera pública están disponibles los métodos GET, HEAD y OPTIONS. Podés consultar las cotizaciones haciendo el llamado directamente al subdirectorio de cada banco, o podes bajar un JSON para tener local todos los datos hasta el momento de la descarga (recordá que también podés descargarlo en otros formatos desde la tabla de cada banco en la web principal). </p>
+        </div>
+        <div class="col-md-5" style="background-color: #f7f7f9; border-radius: 1em; padding: 1em; border: 1px solid #e1e1e8;">
+            <p><strong>Tip:</strong> si querés una API MCQLR (Más Cruda Que La Realidad) podés <a title="JSON con todas las cotizaciones de todos los bancos" href="https://divisa.me/api-completa" target="_blank" class="hipervinculo">encontrarla haciendo click acá.</a></p>
+        </div>
+    </div>
+    <p>A su vez, podés consultar aún más específicamente si proporcionás una fecha exacta. Por ejemplo 'https://divisa.me/api/$(banco)/2020-04-28' te va a devolver un JSON con la cotización del 28 de abril de 2020 de cada divisa en ese banco. Te invito a que pruebes todas las opciones y combinaciones disponibles, y que uses esta data como más te sirva.</p>
+    <p>Por cualquier duda, comentario o sugerencia me podés escribir a nachichuri@gmail.com :)</p>
+</div>
+{% endblock%}
+

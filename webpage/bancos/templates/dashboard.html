@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+{% load i18n %}{% language 'es' %}
+<nav class="navbar-main navbar navbar-light">
+    <a href="{% url "index" %}" class="form-inline my-2 my-lg-0 hipervinculo">
+      <i class="fas fa-arrow-left mr-1"></i>Volver
+    </a>
+    <a href="{{ banco|lower }}/lista" class="form-inline my-2 my-lg-0 hipervinculo">
+      <i class="fas fa-list mr-1"></i> Ver lista completa
+    </a>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 mb-5">
+    <div class="card dashboard-card h-100">
+      <div>
+          <div class="main-card-title">
+            <h1 style="color: {{ color }};"><strong><span id="dashboard-nombre-banco">{{ banco }}</span><br> <p class="main-card-subtitle" id="fecha-actual"> {{ fecha|date:"d/m/Y" }} </p></strong></h1><br>
+          </div>
+          <div class="row" id="compra-venta-hoy">
+            <div class="col-md-6 asd" data-toggle="tooltip" title="Si vendés tus dólares, ésto te da el banco {{ banco }}" >
+              <h3><strong>Compra</strong><br><span id="dashboard-compra"> $ {{ compra }} </span></h3>
+            </div>
+            <div class="col-md-6" data-toggle="tooltip" title="La cotización del banco {{ banco }} sin impuesto PAIS">
+              <h3><strong>Venta</strong><br><span id="dashboard-venta"> $ {{ venta }} </span></h3>
+            </div>            
+          </div>
+          <div class="row">
+            <div class="col-md-12 mb-5" data-toggle="tooltip" title="Lo que pagás por cada dólar que comprás en el banco {{ banco }}">
+              <h5>con impuesto PAIS<br><span id="impuesto-pais"> $ {{ pais }} </span></h5>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-12 anterior">
+              <h5>Anterior</h5>
+                <div class="row">
+                  <div class="col-md-3">
+                  </div>
+                  <div class="col-md-3">
+                    Compra<br>
+                    <span id="dashboard-compra-antes"> $ {{ compra_antes }} </span>
+                  </div>
+                  <div class="col-md-3">
+                    Venta<br>
+                    $ <span id="dashboard-venta-antes">{{ venta_antes }} </span>
+                  </div>
+                  <div class="col-md-3">
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-12" data-toggle="tooltip" title="La variación que hubo respecto a la cotización del {{ dia_anterior|date:"d/m/Y" }}">
+              <h5 class="mb-0">Variación porcentual</h5> <br>
+              <h5 class="mt-0"><span id="variacion-dashboard" class=""> {{ var_porcentual }} </span></h5>
+            </div>
+          </div>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-7 mb-5">
+    <div class="card dashboard-card h-100">
+      <div>
+        
+        <canvas id="dolarChart" width="400" height="400"></canvas>
+        {% load static %}
+        <script type="module">
+          import { chartDraw } from "{% static "js/chart.js" %}";
+          chartDraw("{{ banco }}", "{{ color }}", "{{ fechas_grafico }}", "{{ cotizaciones_grafico }}");
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+{% endlanguage %}
+{% endblock %}

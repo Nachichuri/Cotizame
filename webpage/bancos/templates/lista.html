@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+{% load i18n %}{% language 'es' %}
+
+<!-- Menu de tabla -->
+<div class="container" id="table-menu">
+    <div class="row" style="align-items: center;">
+        <div class="col-md-4">
+            <a href={% url banco|lower %} class="form-inline my-2 my-lg-0 hipervinculo">
+                <i class="fas fa-arrow-left mr-1"></i>Volver
+            </a>
+        </div>
+        <div class="col-md-4" id="table-title">
+            <h4 style="color: {{ color }}; margin-bottom: 0;"><strong>Banco <span id="table-bank-name">{{ banco }}</span></strong></h3>
+        </div>
+        <div class="col-md-4" id="download-section">
+            {% load static %}
+            <script src="{% static "js/tabletoexcel.js" %}"></script>
+            <button type="button" class="btn btn-light boton-descarga" id="spreadsheet" title="Descargar .xls"><i class="fas fa-file-excel"></i></button>
+            <script src="{% static "js/tabletocsv.js" %}"></script>
+            <button type="button" class="btn btn-light boton-descarga" id="csv" title="Descargar .csv"><i class="fas fa-file-csv"></i></button>
+            <button type="button" class="btn btn-light boton-descarga" id="json" title="Descargar .json"><a class="hipervinculo" href="https://divisa.me/api/{{banco|lower}}.json" target="_blank"><i class="fas fa-file-code"></i></a></button>
+        </div>
+    </div>
+</div>
+<!-- Menu de tabla -->
+
+<!-- Tabla -->
+{% if bankObject.last.eur_ven %}
+    {% if bankObject.last.rea_ven %}
+        {% if bankObject.last.uru_ven %}
+        <div class="container table-container">
+            <div class="row">
+                <div class="col-md-6 custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input custom-toggle" id="customSwitches">
+                    <label class="custom-control-label" for="customSwitches">Mostrar impuesto PAIS</label>
+                </div>
+                <div class="col-md-6">
+                    <p id="aclaracion-tabla">Unidades expresadas en pesos argentinos</p>
+                </div>
+            </div>
+            <table class="table table-bordered table-hover sortable" id="tabla-cotizaciones">
+                <thead>
+                <tr>
+                    <th data-defaultsort='disabled' class="box-grueso"></th>
+                    <th colspan=2 data-defaultsort='disabled' class="box-grueso"><strong>Dólar</strong></th>
+                    <th colspan=2 data-defaultsort='disabled' class="box-grueso"><strong>Euro</strong></th>
+                    <th colspan=2 data-defaultsort='disabled' class="box-grueso"><strong>Real</strong></th>
+                    <th colspan=2 data-defaultsort='disabled' class="box-grueso"><strong>Peso Uruguayo</strong></th>
+                </tr>
+                <tr>
+                    <th data-defaultsort='disabled' class="box-grueso"><strong>Fecha</strong></th>
+                    <th class="box-grueso"><strong>Compra</strong></th>
+                    <th class="box-grueso"><strong>Venta</strong></th>
+                    <th class="box-grueso"><strong>Compra</strong></th>
+                    <th class="box-grueso"><strong>Venta</strong></th>
+                    <th class="box-grueso"><strong>Compra</strong></th>
+                    <th class="box-grueso"><strong>Venta</strong></th>
+                    <th class="box-grueso"><strong>Compra</strong></th>
+                    <th class="box-grueso"><strong>Venta</strong></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for dia in bankObject %}
+                        <tr>
+                            <td class="slot-fecha">{{ dia.fecha|date:"Y-m-d" }}</td>
+                            <td>{{ dia.usd_com }}</td>
+                            <td class="valor-venta">{{ dia.usd_ven }}</td>
+                            <td>{{ dia.eur_com }}</td>
+                            <td class="valor-venta">{{ dia.eur_ven }}</td>
+                            <td>{{ dia.rea_com }}</td>
+                            <td class="valor-venta">{{ dia.rea_ven }}</td>
+                            <td>{{ dia.uru_com }}</td>
+                            <td class="valor-venta">{{ dia.uru_ven }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="container table-container">
+            <div class="row">
+                <div class="col-md-6 custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input custom-toggle" id="customSwitches">
+                    <label class="custom-control-label" for="customSwitches">Mostrar impuesto PAIS</label>
+                </div>
+                <div class="col-md-6">
+                    <p id="aclaracion-tabla">Unidades expresadas en pesos argentinos</p>
+                </div>
+            </div>
+            <table class="table table-bordered table-hover sortable" id="tabla-cotizaciones">
+                <thead>
+                <tr>
+                    <th data-defaultsort='disabled' class="box-grueso"></th>
+                    <th colspan=2 data-defaultsort='disabled' class="box-grueso"><strong>Dólar</strong></th>
+                    <th colspan=2 data-defaultsort='disabled' class="box-grueso"><strong>Euro</strong></th>
+                    <th colspan=2 data-defaultsort='disabled' class="box-grueso"><strong>Real</strong></th>
+                </tr>
+                <tr>
+                    <th data-defaultsort='disabled' class="box-grueso"><strong>Fecha</strong></th>
+                    <th class="box-grueso"><strong>Compra</strong></th>
+                    <th class="box-grueso"><strong>Venta</strong></th>
+                    <th class="box-grueso"><strong>Compra</strong></th>
+                    <th class="box-grueso"><strong>Venta</strong></th>
+                    <th class="box-grueso"><strong>Compra</strong></th>
+                    <th class="box-grueso"><strong>Venta</strong></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for dia in bankObject %}
+                        <tr>
+                            <td class="slot-fecha">{{ dia.fecha|date:"Y-m-d" }}</td>
+                            <td>{{ dia.usd_com }}</td>
+                            <td class="valor-venta">{{ dia.usd_ven }}</td>
+                            <td>{{ dia.eur_com }}</td>
+                            <td class="valor-venta">{{ dia.eur_ven }}</td>
+                            <td>{{ dia.rea_com }}</td>
+                            <td class="valor-venta">{{ dia.rea_ven }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    {% else %}
+    <div class="container table-container">
+        <div class="row">
+            <div class="col-md-6 custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input custom-toggle" id="customSwitches">
+                <label class="custom-control-label" for="customSwitches">Mostrar impuesto PAIS</label>
+            </div>
+            <div class="col-md-6">
+                <p id="aclaracion-tabla">Unidades expresadas en pesos argentinos</p>
+            </div>
+        </div>
+        <table class="table table-bordered table-hover sortable" id="tabla-cotizaciones">
+            <thead>
+                <tr>
+                    <th data-defaultsort='disabled' class="box-grueso"></th>
+                    <th colspan=2 data-defaultsort='disabled' class="box-grueso"><strong>Dólar</strong></th>
+                    <th colspan=2 data-defaultsort='disabled' class="box-grueso"><strong>Euro</strong></th>
+                </tr>
+                <tr>
+                    <th data-defaultsort='disabled' class="box-grueso"><strong>Fecha</strong></th>
+                    <th class="box-grueso"><strong>Compra</strong></th>
+                    <th class="box-grueso"><strong>Venta</strong></th>
+                    <th class="box-grueso"><strong>Compra</strong></th>
+                    <th class="box-grueso"><strong>Venta</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dia in bankObject %}
+                    <tr>
+                        <td class="slot-fecha">{{ dia.fecha|date:"Y-m-d" }}</td>
+                        <td>{{ dia.usd_com }}</td>
+                        <td class="valor-venta">{{ dia.usd_ven }}</td>
+                        <td>{{ dia.eur_com }}</td>
+                        <td class="valor-venta">{{ dia.eur_ven }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+{% else %}
+<div class="container table-container">
+    <div class="row">
+        <div class="col-md-6 custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input custom-toggle" id="customSwitches">
+            <label class="custom-control-label" for="customSwitches">Mostrar impuesto PAIS</label>
+        </div>
+        <div class="col-md-6">
+            <p id="aclaracion-tabla">Unidades expresadas en pesos argentinos</p>
+        </div>
+    </div>
+    <table class="table table-bordered table-hover sortable" id="tabla-cotizaciones">
+        <thead>
+            <tr>
+                <th data-defaultsort='disabled' class="box-grueso"></th>
+                <th colspan=2 data-defaultsort='disabled' class="box-grueso"><strong>Dólar</strong></th>
+            </tr>
+            <tr>
+                <th data-defaultsort='disabled' class="box-grueso"><strong>Fecha</strong></th>
+                <th class="box-grueso"><strong>Compra</strong></th>
+                <th class="box-grueso"><strong>Venta</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dia in bankObject %}
+                <tr>
+                    <td class="slot-fecha">{{ dia.fecha|date:"Y-m-d" }}</td>
+                    <td>{{ dia.usd_com }}</td>
+                    <td class="valor-venta">{{ dia.usd_ven }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+<!-- END Tabla -->
+{% endlanguage %}
+{% endblock %}
