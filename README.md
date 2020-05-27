@@ -10,7 +10,7 @@ Toda la información de Divisame es recopilada de fuentes públicas, y permanece
 Podés saber más sobre el proyecto leyendo las [F.A.Q](https://divisa.me/faq).
 
 ## Under the hood
-Divisame funciona con una serie de [scrapers](scrapers) que levantan la información pública de las páginas de cada banco y la guardan en una base de datos (corren corren en un cron bastante crudo, a futuro tengo que ver como implementarlo mejor).
+Divisame funciona con una serie de [scrapers](scrapers) que levantan la información pública de las páginas de cada banco y la guardan en una base de datos (corren corren en un cron bastante crudo, a futuro tengo que ver como implementarlo mejor). Estoy trabajando en un proyecto para armar un programita que centralice todos estos scrapers, podes conocer más [acá](https://github.com/Nachichuri/BankScraper).
 
 Las bases de datos son usadas como base (já) para la [página web](webpage), hecha con Django, un framework web basado en Python. La gestión de la información es bastante sencilla y no es realmente necesario un framework para el frontend, y es posible gestionar todo el contenido solamente con [3 templates de Django](/webpage/bancos/templates/).
 
