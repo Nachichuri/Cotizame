@@ -1,6 +1,10 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from ciudadWriter import Writer
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
 
 # URL a scrapear
 url = "https://www.bancociudad.com.ar/institucional/?herramienta=cotizaciones#"
@@ -9,13 +13,23 @@ url = "https://www.bancociudad.com.ar/institucional/?herramienta=cotizaciones#"
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
 driver = webdriver.Chrome(options=options)
-driver.get(url)
 
+driver.get(url)
+timeout = 3
+try:
+    elemento_presente = EC.presence_of_element_located((By.CLASS_NAME, 'herramientas_cotizaciones'))
+    WebDriverWait(driver, timeout).until(elemento_presente)
+    print("Página cargada")
+except TimeoutException:
+    print("Timed out")
+finally:
+    pagina_scrapeada = driver.page_source
+    driver.quit()
 
 cotiz_final = []
 
 # Con el output que nos da Selenium lo parseamos con BeautifulSoup4
-soup = BeautifulSoup(driver.page_source, 'lxml')
+soup = BeautifulSoup(pagina_scrapeada, 'lxml')
 
 # Ese nesting si se puede ver, Banco Ciudad:
 tabla = soup.find("div", class_="herramientas_cotizaciones")
@@ -36,9 +50,6 @@ cotiz_final = cotiz_final[:len(cotiz_final)-2] # Le sacamos la cotizacion del or
 # Imprimimos en pantalla los valores scrapeados de type float
 print("USD C | USD V | EUR C | EUR V | REA C | REA V")
 print(cotiz_final)
-
-# Cerramos la instancia de Chromium
-driver.quit()
 
 # Escribimos en la DB
 Writer(cotiz_final)
