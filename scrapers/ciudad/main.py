@@ -23,13 +23,13 @@ try:
 except TimeoutException:
     print("Timed out")
 finally:
-    pagina_scrapeada = driver.page_source
-    driver.quit()
+    print("Parseando info...")
 
 cotiz_final = []
 
 # Con el output que nos da Selenium lo parseamos con BeautifulSoup4
-soup = BeautifulSoup(pagina_scrapeada, 'lxml')
+soup = BeautifulSoup(driver.page_source, 'lxml')
+driver.quit()
 
 # Ese nesting si se puede ver, Banco Ciudad:
 tabla = soup.find("div", class_="herramientas_cotizaciones")
