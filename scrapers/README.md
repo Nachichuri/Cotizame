@@ -19,22 +19,39 @@ Cualquier sugerencia es bienvenida en nachichuri@gmail.com
   <summary>MariaDB/MySQL</summary>
 </details>
 
-<details>
-  <summary>BeautifulSoup4</summary>
-    pip install beautifulsoup4
-  </details>
+<details><summary>BeautifulSoup4</summary>
+<p>
 
-<details>
-  <summary>MySQL Connector</summary>
-    pip install mysql-connector
+```console
+pip install beautifulsoup4
+```
+</p>
 </details>
 
-<details>
-  <summary>LXML</summary>
-    pip install lxml
+<details><summary>MySQL Connector</summary>
+<p>
+
+```console
+pip install mysql-connector
+```
+</p>
 </details>
 
-<details>
-  <summary>ChromeDriver</summary>
-    <p>```Tenés que descargar la versión compatible con tu navegador y agregar la ubicación en el $PATH, también podés usar geckodriver.```</p>
+<details><summary>LXML</summary>
+<p>
+
+```console
+pip install lxml
+```
+</p>
+</details>
+
+<details><summary>ChromeDriver</summary>
+<p>
+
+```console
+Tenés que descargar la versión compatible con tu navegador y agregar la ubicación en el $PATH.
+También podés usar geckodriver.
+```
+</p>
 </details>
