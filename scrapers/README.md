@@ -36,5 +36,5 @@ Cualquier sugerencia es bienvenida en nachichuri@gmail.com
 
 <details>
   <summary>ChromeDriver</summary>
-    Tenés que descargar la versión compatible con tu navegador y agregar la ubicación en el $PATH, también podés usar geckodriver.
+    `Tenés que descargar la versión compatible con tu navegador y agregar la ubicación en el $PATH, también podés usar geckodriver.`
 </details>
