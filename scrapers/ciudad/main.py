@@ -5,51 +5,68 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+import time
 
 # URL a scrapear
 url = "https://www.bancociudad.com.ar/institucional/?herramienta=cotizaciones#"
 
-# Creamos la instancia de Selenium con Chrome, le pasamos las opciones para que corra headless (sin GUI)
-options = webdriver.ChromeOptions()
-options.add_argument('headless')
-driver = webdriver.Chrome(options=options)
+def getCotizaciones(url):
+    # El ciudad tiene una página muy unreliable, agregamos este pequeño parche aca y un trycatch block abajo para que intente varias veces
+    # Corregir esto!
+    time.sleep(30)
 
-driver.get(url)
-timeout = 3
-try:
-    elemento_presente = EC.presence_of_element_located((By.CLASS_NAME, 'herramientas_cotizaciones'))
-    WebDriverWait(driver, timeout).until(elemento_presente)
-    print("Página cargada")
-except TimeoutException:
-    print("Timed out")
-finally:
-    print("Parseando info...")
+    # Creamos la instancia de Selenium con Chrome, le pasamos las opciones para que corra headless (sin GUI)
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    driver = webdriver.Chrome(options=options)
 
-cotiz_final = []
+    driver.get(url)
+    timeout = 3
+    try:
+        elemento_presente = EC.presence_of_element_located((By.CLASS_NAME, 'herramientas_cotizaciones'))
+        WebDriverWait(driver, timeout).until(elemento_presente)
+        print("Página cargada")
+    except TimeoutException:
+        print("Timed out")
+    finally:
+        print("Parseando info...")
 
-# Con el output que nos da Selenium lo parseamos con BeautifulSoup4
-soup = BeautifulSoup(driver.page_source, 'lxml')
-driver.quit()
+    cotiz_final = []
 
-# Ese nesting si se puede ver, Banco Ciudad:
-tabla = soup.find("div", class_="herramientas_cotizaciones")
-divs = tabla.find_all("div", class_="cotizacion")
+    # Con el output que nos da Selenium lo parseamos con BeautifulSoup4
+    soup = BeautifulSoup(driver.page_source, 'lxml')
+    driver.quit()
 
-for item in divs:
-    spans = item.find_all("span")
-    for span in spans:
-        span = span.text
-        if '$' in span:
-            span = span[2:]
-            span = span.replace(',', '.')
-            span = float(span)
-            cotiz_final.append(span)
+    # Ese nesting si se puede ver, Banco Ciudad:
+    tabla = soup.find("div", class_="herramientas_cotizaciones")
+    divs = tabla.find_all("div", class_="cotizacion")
 
-cotiz_final = cotiz_final[:len(cotiz_final)-2] # Le sacamos la cotizacion del oro porque who cares, ain't that rich
+    for item in divs:
+        spans = item.find_all("span")
+        for span in spans:
+            span = span.text
+            if '$' in span:
+                span = span[2:]
+                span = span.replace(',', '.')
+                span = float(span)
+                cotiz_final.append(span)
 
-# Imprimimos en pantalla los valores scrapeados de type float
-print("USD C | USD V | EUR C | EUR V | REA C | REA V")
-print(cotiz_final)
+    cotiz_final = cotiz_final[:len(cotiz_final)-2] # Le sacamos la cotizacion del oro porque who cares, ain't that rich
 
-# Escribimos en la DB
-Writer(cotiz_final)
+    # Imprimimos en pantalla los valores scrapeados de type float
+    print("USD C | USD V | EUR C | EUR V | REA C | REA V")
+    print(cotiz_final)
+
+    # Escribimos en la DB
+    Writer(cotiz_final)
+
+attempts = 0;
+
+while attempts < 5:
+    try:
+        getCotizaciones(url)
+        break;
+    except:
+        attempts += 1
+        print("Error, volviendo a intentar")
+
