@@ -16,7 +16,6 @@ export function chartDraw(banco, color, fechas, cotizaciones) {
   gradient.addColorStop(1, color + "00");
 
   // Configuración del chart
-
   var myChart = new Chart(ctx, {
     type: "line",
     data: {
@@ -36,7 +35,7 @@ export function chartDraw(banco, color, fechas, cotizaciones) {
           {
             ticks: {
               beginAtZero: false,
-              max: parseFloat(lista_cotizaciones[lista_cotizaciones.length - 1]) + 0.2,
+              max: Math.max(...lista_cotizaciones.map(Number)) + 0.2,
             },
           },
         ],

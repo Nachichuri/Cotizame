@@ -17,19 +17,19 @@
     <div class="card dashboard-card h-100">
       <div>
           <div class="main-card-title">
-            <h1 style="color: {{ color }};"><strong><span id="dashboard-nombre-banco">{{ banco }}</span><br> <p class="main-card-subtitle" id="fecha-actual"> {{ fecha|date:"d/m/Y" }} </p></strong></h1><br>
+            <h1 style="color: {{ color }}"><strong><span id="dashboard-nombre-banco">{{ banco }}</span><br> <p class="main-card-subtitle" id="fecha-actual"> {{ fecha|date:"d/m/Y" }} </p></strong></h1><br>
           </div>
           <div class="row" id="compra-venta-hoy">
-            <div class="col-md-6 asd" data-toggle="tooltip" title="Ésto te paga el banco {{ banco }} por cada dólar que vendés" >
+            <div class="col-md-6 asd" data-toggle="tooltip" title="Esto te paga el banco {{ banco }} por cada dólar que vendés" >
               <h3><strong>Compra</strong><br><span id="dashboard-compra"> $ {{ compra }} </span></h3>
             </div>
-            <div class="col-md-6" data-toggle="tooltip" title="La cotización del banco {{ banco }} sin impuesto PAIS">
+            <div class="col-md-6" data-toggle="tooltip" title="La cotización del banco {{ banco }} sin impuest">
               <h3><strong>Venta</strong><br><span id="dashboard-venta"> $ {{ venta }} </span></h3>
             </div>            
           </div>
           <div class="row">
             <div class="col-md-12 mb-5" data-toggle="tooltip" title="Lo que pagás por cada dólar que comprás en el banco {{ banco }}">
-              <h5>con impuesto PAIS<br><span id="impuesto-pais"> $ {{ pais }} </span></h5>
+              <h5>con impuestos<br><span id="impuesto-pais"> $ {{ pais }} </span></h5>
             </div>
           </div>
           <div class="row mb-5">
@@ -63,7 +63,6 @@
     <div class="col-md-7 mb-5">
     <div class="card dashboard-card h-100">
       <div>
-        
         <canvas id="dolarChart" width="400" height="400"></canvas>
         {% load static %}
         <script type="module">

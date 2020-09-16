@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-md-6 custom-control custom-switch">
                     <input type="checkbox" class="custom-control-input custom-toggle" id="customSwitches">
-                    <label class="custom-control-label" for="customSwitches">Mostrar impuesto PAIS</label>
+                    <label class="custom-control-label" for="customSwitches">Mostrar impuestos</label>
                 </div>
                 <div class="col-md-6">
                     <p id="aclaracion-tabla">Unidades expresadas en pesos argentinos</p>
@@ -63,7 +63,7 @@
                 </thead>
                 <tbody>
                     {% for dia in bankObject %}
-                        <tr>
+                        <tr class="row-cotizaciones">
                             <td class="slot-fecha">{{ dia.fecha|date:"Y-m-d" }}</td>
                             <td>{{ dia.usd_com }}</td>
                             <td class="valor-venta">{{ dia.usd_ven }}</td>
@@ -109,7 +109,7 @@
                 </thead>
                 <tbody>
                     {% for dia in bankObject %}
-                        <tr>
+                        <tr class="row-cotizaciones">
                             <td class="slot-fecha">{{ dia.fecha|date:"Y-m-d" }}</td>
                             <td>{{ dia.usd_com }}</td>
                             <td class="valor-venta">{{ dia.usd_ven }}</td>
@@ -151,7 +151,7 @@
             </thead>
             <tbody>
                 {% for dia in bankObject %}
-                    <tr>
+                    <tr class="row-cotizaciones">
                         <td class="slot-fecha">{{ dia.fecha|date:"Y-m-d" }}</td>
                         <td>{{ dia.usd_com }}</td>
                         <td class="valor-venta">{{ dia.usd_ven }}</td>
@@ -188,7 +188,7 @@
         </thead>
         <tbody>
             {% for dia in bankObject %}
-                <tr>
+                <tr class="row-cotizaciones">
                     <td class="slot-fecha">{{ dia.fecha|date:"Y-m-d" }}</td>
                     <td>{{ dia.usd_com }}</td>
                     <td class="valor-venta">{{ dia.usd_ven }}</td>

@@ -41,7 +41,6 @@ th {
 
 nav {
   box-shadow: rgba(0, 0, 0, 0.09) 0 6px 10px 0;
-  font-size: 1.2rem;
 }
 
 .navbar-nav {
@@ -56,10 +55,6 @@ nav {
 
 .nav-item {
   margin-left: 1rem;
-}
-
-#api-link {
-  font-size: 0.9em;
 }
 
 /* END Navbar */
@@ -111,10 +106,6 @@ h5 {
   padding-top: 0.4rem;
 }
 
-.pais {
-  font-size: 0.9rem;
-}
-
 .segunda-row {
   font-size: 0.9rem;
   color: #808080;
@@ -136,6 +127,34 @@ h5 {
 }
 #bbva-card:hover > div > a > h5 {
   color: #072146;
+  transition: 0.3s;
+}
+
+#brubank-card:hover:after {
+  border-bottom: 0.3em solid #614bd7;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#brubank-card:hover > div > a > h5 {
+  color: #614bd7;
+  transition: 0.3s;
+}
+
+#credicoop-card:hover:after {
+  border-bottom: 0.3em solid #5e584c;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#credicoop-card:hover > div > a > h5 {
+  color: #5e584c;
   transition: 0.3s;
 }
 
@@ -167,6 +186,20 @@ h5 {
   transition: 0.3s;
 }
 
+#hsbc-card:hover:after {
+  border-bottom: 0.3em solid #db0011;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#hsbc-card:hover > div > a > h5 {
+  color: #db0011;
+  transition: 0.3s;
+}
+
 #icbc-card:hover:after {
   border-bottom: 0.3em solid #c4161c;
   border-radius: 2px;
@@ -178,6 +211,20 @@ h5 {
 }
 #icbc-card:hover > div > a > h5 {
   color: #c4161c;
+  transition: 0.3s;
+}
+
+#macro-card:hover:after {
+  border-bottom: 0.3em solid #0095cf;
+  border-radius: 2px;
+  content: "";
+  display: block;
+  margin-left: 10.3%;
+  width: 80%;
+  transition: 0.3s;
+}
+#macro-card:hover > div > a > h5 {
+  color: #0095cf;
   transition: 0.3s;
 }
 
@@ -359,7 +406,7 @@ td {
 
 .dashboard-card {
   margin-top: 1.5em;
-  padding: 1.7em 1em 0 1em;
+  /*padding: 1.7em 1em 0 1em;*/
   text-align: center;
 }
 

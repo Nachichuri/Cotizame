@@ -6,16 +6,22 @@ $(document).ready(function () {
     // Rice de Index agregando flechitas y colores a las variaciones porcentuales
     // Llamo los ids
     let vpbbva = $("#vpbbva");
+    let vpbrubank = $("#vpbrubank");
     let vpciudad = $("#vpciudad");
+    let vpcredicoop = $("#vpcredicoop");
     let vpgalicia = $("#vpgalicia");
+    let vphsbc = $("#vphsbc");
     let vpicbc = $("#vpicbc");
+    let vpmacro = $("#vpmacro");
     let vpnacion = $("#vpnacion");
     let vppatagonia = $("#vppatagonia");
     let vpprovincia = $("#vpprovincia");
     let vpsantander = $("#vpsantander");
+
+    // TODO: Cambiar a clase única
     
     //Defino lista
-    let listaVariaciones = [vpbbva, vpciudad, vpgalicia, vpicbc, vpnacion, vppatagonia, vpprovincia, vpsantander];
+    let listaVariaciones = [vpbbva, vpbrubank, vpciudad, vpcredicoop, vpgalicia, vphsbc, vpicbc, vpmacro, vpnacion, vppatagonia, vpprovincia, vpsantander];
     for (var i = 0; i<listaVariaciones.length; i++) {
 
         if(parseFloat(listaVariaciones[i].text().replace(",",".")) > 0 ){
@@ -44,7 +50,7 @@ $(document).ready(function () {
 
     // Vamos a hacer una pequeña adición al hacer que en evento hover sobre el span de la cotizacion del dia anterior, muestre la cotizacion con el impuesto pais
     let usd_ven_antes = parseFloat(cotiz_antes.text().replace(",", "."));
-    let usd_ven_con_imp = (usd_ven_antes * 1.3).toFixed(2).replace(".", ",")
+    let usd_ven_con_imp = (usd_ven_antes * 1.65).toFixed(2).replace(".", ",")
 
     $("#dashboard-venta-antes").on("mouseenter mouseleave", function (e) {
         var text =
@@ -58,21 +64,28 @@ $(document).ready(function () {
     $('#customSwitches').prop('checked', false);
 
     $('#customSwitches').bind('change', function () {
-
-        if ($(this).is(':checked'))
+        if ($(this).is(':checked')) {
             $('.valor-venta').each(function() {
-                let valor_con_imp_pais = (parseFloat($(this).text().replace(",", ".")) * 1.3).toFixed(2).toString().replace(".",",")
-                $(this).html(valor_con_imp_pais)
+                if (Date.parse($(this).parent().children('.slot-fecha').text()) > Date.parse('2020-09-15')) {
+                    let valor_con_imp_pais = (parseFloat($(this).text().replace(",", ".")) * 1.65).toFixed(2).toString().replace(".",",")
+                    $(this).html(valor_con_imp_pais)
+                } else {
+                    let valor_con_imp_pais = (parseFloat($(this).text().replace(",", ".")) * 1.3).toFixed(2).toString().replace(".",",")
+                    $(this).html(valor_con_imp_pais)
+                }
             });
-        else
+        } else {
             $('.valor-venta').each(function() {
-                let valor_sin_imp_pais = (parseFloat($(this).text().replace(",", ".")) / 1.3).toFixed(2).toString().replace(".",",")
-                $(this).html(valor_sin_imp_pais)
+                if (Date.parse($(this).parent().children('.slot-fecha').text()) > Date.parse('2020-09-15')) {
+                    let valor_sin_imp_pais = (parseFloat($(this).text().replace(",", ".")) / 1.65).toFixed(2).toString().replace(".",",")
+                    $(this).html(valor_sin_imp_pais)
+                } else {
+                    let valor_con_imp_pais = (parseFloat($(this).text().replace(",", ".")) / 1.3).toFixed(2).toString().replace(".",",")
+                    $(this).html(valor_con_imp_pais)
+                }
             });
-     
+        }
      });
-
-     // Nota mental: BASTA DE AGREGAR COSAS CON JQUERY
 
      // Botones para descargar las tablas
 

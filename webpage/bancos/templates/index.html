@@ -4,23 +4,68 @@
 {% load i18n %}{% language 'es' %}
 <div class="container">
   <!-- Primera fila -->
-  <div class="row mt-5">
+  <div class="row mt-4">
     <div class="col-sm-3 mb-5">
       <div class="card" id="bbva-card">
         <div class="card-body text-center">
-          <a href="{% url "bbva" %}"><h5 class="card-title" id="bbva-title">BBVA</h5></a>
+          <a href="{% url "bbva" %}">
+            <h5 class="card-title" id="bbva-title">BBVA</h5>
+          </a>
           <h6 class="card-subtitle mb-2 text-muted">{{ bbva.fecha|date:'d/m/Y' }}</h6>
           <div class="container">
             <div class="row">
-              <div class="col"><p>Compra <br> $ {{ bbva.usd_com }}</p></div>
-              <div class="col"><p>Venta <br> $ {{ bbva.usd_ven }}</p></div>
+              <div class="col">
+                <p>Compra <br> $ {{ bbva.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ bbva.usd_ven }}</p>
+              </div>
             </div>
             <div class="row">
-              <div class="col"><p class="pais">con impuesto PAIS <br> <span>${{ pais.0 }}</span></p></div>
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.bbva }}</strong></span></p>
+              </div>
             </div>
             <div class="row segunda-row">
-              <div class="col"><p class="mb-2">Spread <br> {{ spread.0 }}</p></div>
-              <div class="col"><p class="mb-2">Variación <br> <span id="vpbbva">{{ variacion.0 }}</span></p></div>
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.bbva }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vpbbva">{{ variation.bbva }}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 mb-5">
+      <div class="card" id="brubank-card">
+        <div class="card-body text-center">
+          <a href="{% url "brubank" %}">
+            <h5 class="card-title" id="brubank-title">Brubank</h5>
+          </a>
+          <h6 class="card-subtitle mb-2 text-muted">{{ brubank.fecha|date:'d/m/Y' }}</h6>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p>Compra <br> $ {{ brubank.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ brubank.usd_ven }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.brubank }}</strong></span></p>
+              </div>
+            </div>
+            <div class="row segunda-row">
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.brubank }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vpbrubank">{{ variation.brubank }}</span></p>
+              </div>
             </div>
           </div>
         </div>
@@ -29,61 +74,64 @@
     <div class="col-sm-3 mb-5">
       <div class="card" id="ciudad-card">
         <div class="card-body text-center">
-          <a href="{% url "ciudad" %}" id="ciudad-title"><h5 class="card-title">Ciudad</h5></a>
+          <a href="{% url "ciudad" %}" id="ciudad-title">
+            <h5 class="card-title">Ciudad</h5>
+          </a>
           <h6 class="card-subtitle mb-2 text-muted">{{ ciudad.fecha|date:'d/m/Y' }}</h6>
           <div class="container">
             <div class="row">
-              <div class="col"><p>Compra <br> $ {{ ciudad.usd_com }}</p></div>
-              <div class="col"><p>Venta <br> $ {{ ciudad.usd_ven }}</p></div>
+              <div class="col">
+                <p>Compra <br> $ {{ ciudad.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ ciudad.usd_ven }}</p>
+              </div>
             </div>
             <div class="row">
-              <div class="col"><p class="pais">con impuesto PAIS <br> <span>${{ pais.1 }}</span></p></div>
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.ciudad }}</strong></span></p>
+              </div>
             </div>
             <div class="row segunda-row">
-              <div class="col"><p class="mb-2">Spread <br> {{ spread.1 }}</p></div>
-              <div class="col"><p class="mb-2">Variación <br> <span id="vpciudad">{{ variacion.1 }}</span></p></div>
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.ciudad }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vpciudad">{{ variation.ciudad }}</span></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-sm-3 mb-5">
-      <div class="card" id="galicia-card">
+      <div class="card" id="credicoop-card">
         <div class="card-body text-center">
-          <a href="{% url "galicia" %}" id="galicia-title"><h5 class="card-title">Galicia</h5></a>
-          <h6 class="card-subtitle mb-2 text-muted">{{ galicia.fecha|date:'d/m/Y' }}</h6>
+          <a href="{% url "credicoop" %}">
+            <h5 class="card-title" id="credicoop-title">Credicoop</h5>
+          </a>
+          <h6 class="card-subtitle mb-2 text-muted">{{ credicoop.fecha|date:'d/m/Y' }}</h6>
           <div class="container">
             <div class="row">
-              <div class="col"><p>Compra <br> $ {{ galicia.usd_com }}</p></div>
-              <div class="col"><p>Venta <br> $ {{ galicia.usd_ven }}</p></div>
+              <div class="col">
+                <p>Compra <br> $ {{ credicoop.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ credicoop.usd_ven }}</p>
+              </div>
             </div>
             <div class="row">
-              <div class="col"><p class="pais">con impuesto PAIS <br> <span>${{ pais.2 }}</span></p></div>
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.credicoop }}</strong></span></p>
+              </div>
             </div>
             <div class="row segunda-row">
-              <div class="col"><p class="mb-2">Spread <br> {{ spread.2 }}</p></div>
-	            <div class="col"><p class="mb-2">Variación <br> <span id="vpgalicia">{{ variacion.2 }}</span></p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3 mb-5">
-      <div class="card" id="icbc-card">
-        <div class="card-body text-center">
-          <a href="{% url "icbc" %}" id="icbc-title"><h5 class="card-title">ICBC</h5></a>
-          <h6 class="card-subtitle mb-2 text-muted">{{ icbc.fecha|date:'d/m/Y' }}</h6>
-          <div class="container">
-            <div class="row">
-              <div class="col"><p>Compra <br> $ {{ icbc.usd_com }}</p></div>
-              <div class="col"><p>Venta <br> $ {{ icbc.usd_ven }}</p></div>
-            </div>
-            <div class="row">
-              <div class="col"><p class="pais">con impuesto PAIS <br> <span>${{ pais.3 }}</span></p></div>
-            </div>
-            <div class="row segunda-row">
-              <div class="col"><p class="mb-2">Spread <br> {{ spread.3 }}</p></div>
-              <div class="col"><p class="mb-2">Variación <br> <span id="vpicbc">{{ variacion.3 }}</span></p></div>
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.credicoop }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vpcredicoop">{{ variation.credicoop }}</span></p>
+              </div>
             </div>
           </div>
         </div>
@@ -92,24 +140,174 @@
   </div>
   <!-- END Primera fila -->
 
-    <!-- Segunda fila -->
+  <!-- Segunda fila -->
   <div class="row">
+    <div class="col-sm-3 mb-5">
+      <div class="card" id="galicia-card">
+        <div class="card-body text-center">
+          <a href="{% url "galicia" %}" id="galicia-title">
+            <h5 class="card-title">Galicia</h5>
+          </a>
+          <h6 class="card-subtitle mb-2 text-muted">{{ galicia.fecha|date:'d/m/Y' }}</h6>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p>Compra <br> $ {{ galicia.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ galicia.usd_ven }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.galicia }}</strong></span></p>
+              </div>
+            </div>
+            <div class="row segunda-row">
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.galicia }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vpgalicia">{{ variation.galicia }}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 mb-5">
+      <div class="card" id="hsbc-card">
+        <div class="card-body text-center">
+          <a href="{% url "hsbc" %}">
+            <h5 class="card-title" id="hsbc-title">HSBC</h5>
+          </a>
+          <h6 class="card-subtitle mb-2 text-muted">{{ hsbc.fecha|date:'d/m/Y' }}</h6>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p>Compra <br> $ {{ hsbc.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ hsbc.usd_ven }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.hsbc }}</strong></span></p>
+              </div>
+            </div>
+            <div class="row segunda-row">
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.hsbc }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vphsbc">{{ variation.hsbc }}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 mb-5">
+      <div class="card" id="icbc-card">
+        <div class="card-body text-center">
+          <a href="{% url "icbc" %}" id="icbc-title">
+            <h5 class="card-title">ICBC</h5>
+          </a>
+          <h6 class="card-subtitle mb-2 text-muted">{{ icbc.fecha|date:'d/m/Y' }}</h6>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p>Compra <br> $ {{ icbc.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ icbc.usd_ven }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.icbc }}</strong></span></p>
+              </div>
+            </div>
+            <div class="row segunda-row">
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.icbc }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vpicbc">{{ variation.icbc }}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 mb-5">
+      <div class="card" id="macro-card">
+        <div class="card-body text-center">
+          <a href="{% url "macro" %}">
+            <h5 class="card-title" id="macro-title">Macro</h5>
+          </a>
+          <h6 class="card-subtitle mb-2 text-muted">{{ macro.fecha|date:'d/m/Y' }}</h6>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p>Compra <br> $ {{ macro.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ macro.usd_ven }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.macro }}</strong></span></p>
+              </div>
+            </div>
+            <div class="row segunda-row">
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.macro }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vpmacro">{{ variation.macro }}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END Segunda fila -->
+
+  <!-- Tercera fila -->
+  <div class="row">
+
     <div class="col-sm-3 mb-5">
       <div class="card" id="nacion-card">
         <div class="card-body text-center">
-          <a href="{% url "nacion" %}" id="nacion-title"><h5 class="card-title">Nación</h5></a>
+          <a href="{% url "nacion" %}" id="nacion-title">
+            <h5 class="card-title">Nación</h5>
+          </a>
           <h6 class="card-subtitle mb-2 text-muted">{{ nacion.fecha|date:'d/m/Y' }}</h6>
           <div class="container">
             <div class="row">
-              <div class="col"><p>Compra <br> $ {{ nacion.usd_com }}</p></div>
-              <div class="col"><p>Venta <br> $ {{ nacion.usd_ven }}</p></div>
+              <div class="col">
+                <p>Compra <br> $ {{ nacion.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ nacion.usd_ven }}</p>
+              </div>
             </div>
             <div class="row">
-              <div class="col"><p class="pais">con impuesto PAIS <br> <span>${{ pais.4 }}</span></p></div>
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.nacion }}</strong></span></p>
+              </div>
             </div>
             <div class="row segunda-row">
-              <div class="col"><p class="mb-2">Spread <br> {{ spread.4 }}</p></div>
-              <div class="col"><p class="mb-2">Variación <br> <span id="vpnacion">{{ variacion.4 }}</span></p></div>
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.nacion }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vpnacion">{{ variation.nacion }}</span></p>
+              </div>
             </div>
           </div>
         </div>
@@ -118,19 +316,31 @@
     <div class="col-sm-3 mb-5">
       <div class="card" id="patagonia-card">
         <div class="card-body text-center">
-          <a href="{% url "patagonia" %}" id="patagonia-title"><h5 class="card-title">Patagonia</h5></a>
+          <a href="{% url "patagonia" %}" id="patagonia-title">
+            <h5 class="card-title">Patagonia</h5>
+          </a>
           <h6 class="card-subtitle mb-2 text-muted">{{ patagonia.fecha|date:'d/m/Y' }}</h6>
           <div class="container">
             <div class="row">
-              <div class="col"><p>Compra <br> $ {{ patagonia.usd_com }}</p></div>
-              <div class="col"><p>Venta <br> $ {{ patagonia.usd_ven }}</p></div>
+              <div class="col">
+                <p>Compra <br> $ {{ patagonia.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ patagonia.usd_ven }}</p>
+              </div>
             </div>
             <div class="row">
-              <div class="col"><p class="pais">con impuesto PAIS <br> <span>${{ pais.5 }}</span></p></div>
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.patagonia }}</strong></span></p>
+              </div>
             </div>
             <div class="row segunda-row">
-              <div class="col"><p class="mb-2">Spread <br> {{ spread.5 }}</p></div>
-              <div class="col"><p class="mb-2">Variación <br> <span id="vppatagonia">{{ variacion.5 }}</span></p></div>
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.patagonia }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vppatagonia">{{ variation.patagonia }}</span></p>
+              </div>
             </div>
           </div>
         </div>
@@ -139,19 +349,31 @@
     <div class="col-sm-3 mb-5">
       <div class="card" id="provincia-card">
         <div class="card-body text-center">
-          <a href="{% url "provincia" %}" id="provincia-title"><h5 class="card-title">Provincia</h5></a>
+          <a href="{% url "provincia" %}" id="provincia-title">
+            <h5 class="card-title">Provincia</h5>
+          </a>
           <h6 class="card-subtitle mb-2 text-muted">{{ provincia.fecha|date:'d/m/Y' }}</h6>
           <div class="container">
             <div class="row">
-              <div class="col"><p>Compra <br> $ {{ provincia.usd_com }}</p></div>
-              <div class="col"><p>Venta <br> $ {{ provincia.usd_ven }}</p></div>
+              <div class="col">
+                <p>Compra <br> $ {{ provincia.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ provincia.usd_ven }}</p>
+              </div>
             </div>
             <div class="row">
-              <div class="col"><p class="pais">con impuesto PAIS <br> <span>${{ pais.6 }}</span></p></div>
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.provincia }}</strong></span></p>
+              </div>
             </div>
             <div class="row segunda-row">
-              <div class="col"><p class="mb-2">Spread <br> {{ spread.6 }}</p></div>
-              <div class="col"><p class="mb-2">Variación <br> <span id="vpprovincia">{{ variacion.6 }}</span></p></div>
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.provincia }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vpprovincia">{{ variation.provincia }}</span></p>
+              </div>
             </div>
           </div>
         </div>
@@ -160,26 +382,38 @@
     <div class="col-sm-3 mb-5">
       <div class="card" id="santander-card">
         <div class="card-body text-center">
-          <a href="{% url "santander" %}" id="santander-title"><h5 class="card-title">Santander</h5></a>
+          <a href="{% url "santander" %}" id="santander-title">
+            <h5 class="card-title">Santander</h5>
+          </a>
           <h6 class="card-subtitle mb-2 text-muted">{{ santander.fecha|date:'d/m/Y' }}</h6>
           <div class="container">
             <div class="row">
-              <div class="col"><p>Compra <br> $ {{ santander.usd_com }}</p></div>
-              <div class="col"><p>Venta <br> $ {{ santander.usd_ven }}</p></div>
+              <div class="col">
+                <p>Compra <br> $ {{ santander.usd_com }}</p>
+              </div>
+              <div class="col">
+                <p>Venta <br> $ {{ santander.usd_ven }}</p>
+              </div>
             </div>
             <div class="row">
-              <div class="col"><p class="pais">con impuesto PAIS <br> <span>${{ pais.7 }}</span></p></div>
+              <div class="col">
+                <p class="pais">con impuestos <br> <span><strong>${{ pais.santander }}</strong></span></p>
+              </div>
             </div>
             <div class="row segunda-row">
-              <div class="col"><p class="mb-2">Spread <br> {{ spread.7 }}</p></div>
-              <div class="col"><p class="mb-2">Variación <br> <span id="vpsantander">{{ variacion.7 }}</span></p></div>
+              <div class="col">
+                <p class="mb-2">Spread <br> {{ spread.santander }}</p>
+              </div>
+              <div class="col">
+                <p class="mb-2">Variación <br> <span id="vpsantander">{{ variation.santander }}</span></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- END Segunda fila -->
+  <!-- END Tercera fila -->
 </div>
 
 {% endlanguage %}
